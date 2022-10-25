@@ -23,5 +23,5 @@ Os dados recebidos serão:
 
 
 
-<img src="https://img.icons8.com/color/128/000000/java-coffee-cup-logo.png"/>				<img src="https://img.icons8.com/color/48/000000/mysql-logo.png"/>				<img src="https://img.icons8.com/color/128/000000/spring-logo.png"/>
+<img src="https://img.icons8.com/color/128/000000/java-coffee-cup-logo.png"/>				<img src="https://img.icons8.com/color/128/000000/mysql-logo.png"/>				<img src="https://img.icons8.com/color/128/000000/spring-logo.png"/>
 
