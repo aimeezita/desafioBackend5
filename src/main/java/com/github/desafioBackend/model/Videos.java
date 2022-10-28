@@ -4,8 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name ="tb_videos")
@@ -25,6 +28,14 @@ public class Videos {
 	@NotBlank(message ="O link para o vídeo é obrigatório")
 	private String url;
 
+	
+	//Relacionamento
+	
+	@ManyToOne
+	@JsonIgnoreProperties("videos")
+	private Categoria categoria;
+	
+	
 	
 	//Getters and Setters
 	
@@ -58,6 +69,16 @@ public class Videos {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	
+	//Get e set do Relacionamento
+	public Categoria getCategoria() {
+		return this.categoria;
+	}
+	
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 	
 	

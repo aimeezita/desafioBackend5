@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.desafioBackend.model.Videos;
+import com.github.desafioBackend.repository.CategoriaRepository;
 import com.github.desafioBackend.repository.VideosRepository;
 
 @RestController
@@ -28,10 +29,17 @@ public class VideosController {
 	@Autowired 
 	private VideosRepository videosRepository;
 	
+	
+	@Autowired
+	private CategoriaRepository categoriaRepository;
 
 	
+	
+	
+	
+	
 	@GetMapping
-	public ResponseEntity<List<Videos>> getAll (){
+	public ResponseEntity<List<Videos>> getAll(){
 		return ResponseEntity.ok(videosRepository.findAll());
 	}
 
@@ -47,24 +55,46 @@ public class VideosController {
 		return ResponseEntity.ok(videosRepository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 
+	
+	
+	
 	@PostMapping
 	public ResponseEntity<Videos> postVideos (@Valid @RequestBody Videos videos){
 		
+		if (categoriaRepository.existsById(videos.getCategoria().getId()))
 			return ResponseEntity.status(HttpStatus.CREATED).body(videosRepository.save(videos));
 	
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+
 			
 	}
+	
+	
+	
+	
 	
 	@PutMapping
 	public ResponseEntity<Videos> putVideos (@Valid @RequestBody Videos videos){
 		
-		return videosRepository.findById(videos.getId())
-				.map(resposta -> {
-					return ResponseEntity.ok().body(videosRepository.save(videos));
-				})
-				.orElse(ResponseEntity.notFound().build());
-	}
+		if (videosRepository.existsById(videos.getId())){
 			
+			if (categoriaRepository.existsById(videos.getCategoria().getId()))
+				return ResponseEntity.status(HttpStatus.OK)
+						.body(videosRepository.save(videos));
+			
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			
+		}			
+			
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+	}
+	
+	
+	
+	
+	
+	
+	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteVideos(@PathVariable Long id) {
 		
