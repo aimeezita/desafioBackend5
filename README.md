@@ -23,5 +23,5 @@ Os dados recebidos serão:
 
 
 
-<img src="C:\Users\Aimée\AppData\Roaming\Typora\typora-user-images\image-20221025125721994.png" alt="image-20221025125721994" style="zoom: 25%;" />				<img src="C:\Users\Aimée\AppData\Roaming\Typora\typora-user-images\image-20221025125830420.png" alt="image-20221025125830420" style="zoom:25%;" />				<img src="https://img.icons8.com/color/128/000000/spring-logo.png"/>
+<img src="https://img.icons8.com/color/48/000000/java-coffee-cup-logo.png"/>				<img src="https://img.icons8.com/color/48/000000/mysql-logo.png"/>				<img src="https://img.icons8.com/color/48/000000/spring-logo.png"/>
 
